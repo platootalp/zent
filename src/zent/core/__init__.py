@@ -9,7 +9,8 @@ This module contains the foundational ABC-based abstractions:
 - Steps: Typed memory steps for observability
 """
 
-from zent.core.agent import Agent, AgentConfig
+from zent.core.agent import Agent, AgentConfig, Memory
+from zent.core.memory import InMemoryMemory
 from zent.core.messages import Message, MessageRole, ToolCall, ToolResult
 from zent.core.model import BaseModel
 from zent.core.steps import (
@@ -27,6 +28,9 @@ __all__ = [
     # Agent
     "Agent",
     "AgentConfig",
+    # Memory
+    "Memory",
+    "InMemoryMemory",
     # Model
     "BaseModel",
     # Tool

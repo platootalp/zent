@@ -6,7 +6,7 @@ import pytest
 
 from zent.core.messages import MessageRole, ToolCall
 from zent.core.steps import ActionStep, FinalAnswerStep, MemoryStep, TaskStep
-from zent.integrations.memory.in_memory import InMemoryMemory
+from zent.core.memory import InMemoryMemory
 
 
 class TestInMemoryMemory:

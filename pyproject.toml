@@ -63,3 +63,8 @@ ignore = ["D100", "D104"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+
+[dependency-groups]
+dev = [
+    "pytest-asyncio>=1.3.0",
+]

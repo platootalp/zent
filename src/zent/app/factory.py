@@ -14,9 +14,9 @@ from zent.core.agent import AgentConfig
 
 if TYPE_CHECKING:
     from zent.core.agent import Agent
+    from zent.core.memory import InMemoryMemory
     from zent.core.model import BaseModel
     from zent.core.tool import BaseTool
-    from zent.integrations.memory.in_memory import InMemoryMemory
 
 
 def create_agent(
@@ -72,7 +72,7 @@ def create_agent(
 
     # Create default memory if not provided
     if memory is None:
-        from zent.integrations.memory.in_memory import InMemoryMemory
+        from zent.core.memory import InMemoryMemory
 
         memory = InMemoryMemory()
 
