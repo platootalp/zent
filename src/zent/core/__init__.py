@@ -5,24 +5,28 @@ This module contains the foundational ABC-based abstractions:
 - BaseTool: Abstract base for tools
 - Agent: Abstract base for agents (Template Method pattern)
 - Memory: Interface for conversation state
-- Messages: Core message types
-- Steps: Typed memory steps for observability
+- Types: Core data models (Message, ToolCall, Step types, etc.)
 """
 
-from zent.core.agent import Agent, AgentConfig, Memory
-from zent.core.memory import InMemoryMemory
-from zent.core.messages import Message, MessageRole, ToolCall, ToolResult
+from zent.core.agent import Agent, AgentConfig
+from zent.core.memory import InMemoryMemory, Memory
 from zent.core.model import BaseModel
-from zent.core.steps import (
+from zent.core.tool import BaseTool, ToolRegistry, tool
+from zent.core.types import (
     ActionStep,
     AgentResult,
     FinalAnswerStep,
     MemoryStep,
+    Message,
+    MessageRole,
+    ModelResponse,
     PlanningStep,
+    StepType,
     SystemPromptStep,
     TaskStep,
+    ToolCall,
+    ToolResult,
 )
-from zent.core.tool import BaseTool, ToolRegistry, tool
 
 __all__ = [
     # Agent
@@ -37,12 +41,12 @@ __all__ = [
     "BaseTool",
     "ToolRegistry",
     "tool",
-    # Messages
+    # Types
     "Message",
     "MessageRole",
     "ToolCall",
     "ToolResult",
-    # Steps
+    "ModelResponse",
     "MemoryStep",
     "SystemPromptStep",
     "TaskStep",
@@ -50,4 +54,5 @@ __all__ = [
     "ActionStep",
     "FinalAnswerStep",
     "AgentResult",
+    "StepType",
 ]

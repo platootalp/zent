@@ -13,7 +13,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any, AsyncIterator
 
-from zent.core.messages import Message, ModelResponse
+from zent.core.types import Message, ModelResponse
 
 if TYPE_CHECKING:
     from zent.core.tool import BaseTool

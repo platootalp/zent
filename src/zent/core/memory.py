@@ -1,26 +1,49 @@
-"""In-memory memory implementation.
+"""Memory abstractions and implementations for Zent.
 
 Reference:
 - smolagents: AgentMemory
 - LangChain: ConversationBufferMemory
-
-Simple in-memory storage for development and testing.
-For production, consider persistent storage implementations.
 """
 
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 
-from zent.core.agent import Memory
-from zent.core.messages import Message, MessageRole
-from zent.core.steps import (
+from zent.core.types import (
     ActionStep,
     FinalAnswerStep,
     MemoryStep,
-    StepType,
+    Message,
     TaskStep,
 )
+
+
+class Memory(ABC):
+    """Abstract base class for memory implementations.
+
+    Similar to smolagents' AgentMemory but using ABC.
+    """
+
+    @abstractmethod
+    async def add(self, step: MemoryStep) -> None:
+        """Add a step to memory."""
+        pass
+
+    @abstractmethod
+    async def get_messages(self, limit: int = 10) -> list[Message]:
+        """Get steps as messages."""
+        pass
+
+    @abstractmethod
+    async def get_steps(self, limit: int = 10) -> list[MemoryStep]:
+        """Get raw steps."""
+        pass
+
+    @abstractmethod
+    async def clear(self) -> None:
+        """Clear all memory."""
+        pass
 
 
 @dataclass

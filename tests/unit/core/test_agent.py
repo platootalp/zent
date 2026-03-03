@@ -6,7 +6,8 @@ from typing import Any, AsyncIterator
 
 import pytest
 
-from zent.core.agent import Agent, AgentConfig, Memory
+from zent.core.agent import Agent, AgentConfig
+from zent.core.memory import Memory
 from zent.core.messages import Message, ModelResponse, ToolCall, ToolResult
 from zent.core.model import BaseModel
 from zent.core.steps import (

@@ -16,16 +16,18 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any, Callable
 
-from zent.core.messages import Message, MessageRole, ToolCall, ToolResult
-from zent.core.steps import (
+from zent.core.types import (
     ActionStep,
     AgentResult,
     FinalAnswerStep,
     MemoryStep,
     TaskStep,
+    ToolCall,
+    ToolResult,
 )
 
 if TYPE_CHECKING:
+    from zent.core.memory import Memory
     from zent.core.model import BaseModel
     from zent.core.tool import BaseTool, ToolRegistry
 
@@ -246,30 +248,3 @@ class Agent(ABC):
 
 # Avoid circular import
 from zent.core.tool import ToolRegistry
-
-
-class Memory(ABC):
-    """Abstract base class for memory implementations.
-
-    Similar to smolagents' AgentMemory but using ABC.
-    """
-
-    @abstractmethod
-    async def add(self, step: MemoryStep) -> None:
-        """Add a step to memory."""
-        pass
-
-    @abstractmethod
-    async def get_messages(self, limit: int = 10) -> list[Message]:
-        """Get steps as messages."""
-        pass
-
-    @abstractmethod
-    async def get_steps(self, limit: int = 10) -> list[MemoryStep]:
-        """Get raw steps."""
-        pass
-
-    @abstractmethod
-    async def clear(self) -> None:
-        """Clear all memory."""
-        pass
